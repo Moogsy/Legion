@@ -1,5 +1,5 @@
 use bevy::{prelude::*, window::PrimaryWindow};
-use legion::SpatialPlugin; 
+use legion::{ProjectilesPlugin, SpaceshipsPlugin, SpatialPlugin}; 
 
 fn spawn_camera(
     mut commands: Commands,
@@ -21,6 +21,8 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
         .add_plugins(SpatialPlugin)
+        .add_plugins(SpaceshipsPlugin)
+        .add_plugins(ProjectilesPlugin)
         .add_systems(Startup, spawn_camera)
         .run();
 }

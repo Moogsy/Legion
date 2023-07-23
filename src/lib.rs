@@ -1,5 +1,6 @@
 pub mod ai;
-pub mod spaceships;
+mod spaceships;
+pub use spaceships::SpaceshipsPlugin; 
 
 mod spatial;
 pub use spatial::SpatialPlugin;

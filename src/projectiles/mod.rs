@@ -13,6 +13,7 @@ pub struct ProjectilesPlugin;
 
 impl Plugin for ProjectilesPlugin {
     fn build(&self, app: &mut App) {
-        
+        app
+            .add_plugins(bullet::BulletPlugin);
     }
 }

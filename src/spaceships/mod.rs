@@ -11,6 +11,7 @@ pub struct SpaceshipsPlugin;
 
 impl Plugin for SpaceshipsPlugin {
     fn build(&self, app: &mut App) {
-        
+        app
+            .add_plugins(friendly::FriendlyPlugin);
     }
 }

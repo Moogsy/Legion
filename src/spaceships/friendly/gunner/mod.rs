@@ -9,6 +9,8 @@ pub struct GunnerPlugin;
 
 impl Plugin for GunnerPlugin {
     fn build(&self, app: &mut App) {
-        
+        app
+            .add_systems(Startup, systems::test_spawn)
+            .add_systems(Update, systems::shoot);
     }
 }
