@@ -1,8 +1,4 @@
 use bevy::prelude::*; 
-
-mod components;
-pub use components::*;
-
 mod gunner;
 
 pub struct FriendlyPlugin;

@@ -1,5 +1,5 @@
 use bevy::prelude::*; 
-use crate::{ai::{SmartUnitBundle, MoveState, Forward}, projectiles::ShootEvent};
+use crate::{ai::{SmartUnitBundle, TranslateAction}, projectiles::ShootEvent, measurement_units::TranslationSpeed};
 
 use super::super::ProjectileType;
 
@@ -11,7 +11,7 @@ impl ProjectileType for Bullet {}
 #[derive(Bundle, Default)]
 pub struct BulletBundle {
     pub projectile_type: Bullet,
-    pub smart_unit_bundle: SmartUnitBundle<MoveState<Forward>>,
+    pub smart_unit_bundle: SmartUnitBundle<TranslateAction>,
     pub sprite_bundle: SpriteBundle,
 }
 
@@ -31,7 +31,9 @@ impl BulletBundle {
                 },
                 ..default()
             },
-            ..default()
+            smart_unit_bundle: SmartUnitBundle::with_default_state(
+                TranslateAction::horizontal(TranslationSpeed::from_coords_per_seconds(400.0))
+            )
         }
     }
 }

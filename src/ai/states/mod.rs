@@ -30,16 +30,23 @@
 
 use bevy::prelude::*;
 
-mod shoot;
-pub use shoot::*;
+mod actions;
+pub use actions::*;
 
-mod r#move;
-pub use r#move::*;
+mod shoot_at;
+pub use shoot_at::ShootAtState;
 
-/// Marks a structure as one that can be used as a state for an unit
-pub trait UnitState: Component {}
+mod aim;
+pub use aim::*;
 
-#[derive(Bundle)]
-pub struct StateCleanupBundle {
-    pub shoot: ShootState,
+/// This plugins contains logic used to implement a state machine for units
+pub struct StatesPlugin;
+
+impl Plugin for StatesPlugin {
+    fn build(&self, app: &mut App) {
+        app
+            .add_plugins(actions::ActionsPlugin)
+            .add_plugins(aim::AimPlugin)
+            .add_plugins(shoot_at::ShootAtPlugin);
+    }
 }

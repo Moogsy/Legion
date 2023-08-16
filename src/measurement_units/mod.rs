@@ -5,6 +5,10 @@
 pub struct TranslationSpeed(f32);
 
 impl TranslationSpeed {
+    pub fn zero() -> Self {
+        Self(0.0)
+    }
+
     pub fn from_coords_per_seconds(cps: f32) -> Self {
         Self(cps)
     }
